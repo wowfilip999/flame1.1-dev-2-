@@ -37,8 +37,7 @@ minecraft = QtWidgets.QPushButton("minecraft", parent=fl)
 exit = QtWidgets.QPushButton("exit", parent=fl)
 name = QtWidgets.QLabel("Flame Autoclicker v 1.1", parent=fl)
 oImage = QImage("pexels-rafael-guajardo-604671.jpg")
-oImage = oImage.scaled(QSize(0,200))            
-name.setFont(QFont("Arial", 20))
+oImage = oImage.scaled(QSize(0,200))
 name.setStyleSheet("QLabel"
                   "{"
                   "color: darkred;"
@@ -162,7 +161,14 @@ exit.clicked.connect(lambda: appexit())
 github.clicked.connect(lambda: githubfunct())
 manual.clicked.connect(lambda: man())
 
+click.setFont(QFont("Arial", 13))
+settings.setFont(QFont("Arial", 13))
+info.setFont(QFont("Arial", 13))
+minecraft.setFont(QFont("Arial", 13))
+exit.setFont(QFont("Arial", 13))
+creator.setFont(QFont("italic", 11))
 manual.setFont(QFont("italic", 15))
+name.setFont(QFont("Arial", 20))
 
 
 
@@ -173,7 +179,7 @@ click.resize(500, 90)
 minecraft.move(420, 230)
 minecraft.resize(500 ,90)
 
-name.move(530, 0)
+name.move(530, 30)
 settings.move(420, 320)
 settings.resize(500, 90)
 info.move(420, 410)
