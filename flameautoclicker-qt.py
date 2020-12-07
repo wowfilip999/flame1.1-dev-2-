@@ -5,6 +5,7 @@ class fla:
   b = ("600x600")
 
 
+import platform
 from tkinter import *
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QSize, QProcess
@@ -24,6 +25,9 @@ else:
     msg = "by wowfilip999"
     
 
+operatingsystem = platform.system()
+
+
 a = random.randint(4, 5)
 b = random.randint(4, 5)
 easteregG = QtWidgets.QPushButton("click me!", parent=fl)
@@ -33,6 +37,8 @@ click = QtWidgets.QPushButton("click", parent=fl)
 info = QtWidgets.QPushButton("info", parent=fl)
 github = QtWidgets.QPushButton("", parent=fl)
 settings = QtWidgets.QPushButton("settings", parent=fl)
+system = QtWidgets.QLabel(operatingsystem, parent=fl)
+on = QtWidgets.QLabel("on", parent=fl)
 minecraft = QtWidgets.QPushButton("minecraft", parent=fl)
 exit = QtWidgets.QPushButton("exit", parent=fl)
 name = QtWidgets.QLabel("Flame Autoclicker v 1.1", parent=fl)
@@ -118,6 +124,19 @@ info.setStyleSheet("QPushButton"
              )
 
 
+system.setStyleSheet("QLabel"
+                "{"
+                "color: darkred;"
+                "}"
+             )
+
+on.setStyleSheet("QLabel"
+                "{"
+                "color: darkred;"
+                "}"
+             )
+
+
 def infofunct():
  os.system("python3 click-qt.py")
 
@@ -169,6 +188,8 @@ exit.setFont(QFont("Arial", 13))
 creator.setFont(QFont("italic", 11))
 manual.setFont(QFont("italic", 15))
 name.setFont(QFont("Arial", 20))
+system.setFont(QFont("Italic", 15))
+on.setFont(QFont("Italic", 15))
 
 
 
@@ -189,6 +210,8 @@ exit.move(420, 500)
 creator.move(70 ,670)
 github.move(0, 650)
 github.resize(50 ,50)
+system.move(1145, 660)
+on.move(1110, 660)
 j = 0
 jj = 0 
 n = 0
@@ -228,4 +251,3 @@ if a == 5:
 fl.show()
 
 flame.exec_()
-
