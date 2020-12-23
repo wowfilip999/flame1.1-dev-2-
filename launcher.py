@@ -1,6 +1,13 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QFont
+import platform
 import os
+
+system = platform.system()
+
+file = "flameautoclicker-qt"
+cmd = "python"
+
 
 app = QtWidgets.QApplication([])
 formular = QtWidgets.QWidget()
@@ -13,7 +20,7 @@ def cmdtk():
  os.system("python3 flameautoclicker.py")
 
 def cmd():
- os.system("python3 flameautoclicker-qt.py")
+ os.system("python3 flameautoclicker-qt.py") 
 
 
 p.setFont(QFont("italic",20))

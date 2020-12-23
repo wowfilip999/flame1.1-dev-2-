@@ -1,4 +1,5 @@
 import os
+import looksettings as look
 # import extesionload #launch the run.py 
 class fla:
   a = ("600")
@@ -6,6 +7,17 @@ class fla:
 
 
 import platform
+
+operatingsystem = platform.system()
+
+if operatingsystem == "Linux":
+  os.system("python3 modulecheck.py")
+
+if operatingsystem == "Windows":
+  os.system("python modulecheck.py")
+
+
+
 from tkinter import *
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QSize, QProcess
@@ -18,18 +30,15 @@ message = random.randint(2, 4)
 msg = "by wowfilip999"
 
 if message == 3:
-  msg = "test"
+  msg = "wowfilip999 is big pp programmer"
 if message == 2:
   msg = "filip have 15 years"
 else:
     msg = "by wowfilip999"
     
 
-operatingsystem = platform.system()
-
-
-a = random.randint(4, 5)
-b = random.randint(4, 5)
+a = random.randint(4, 6)
+b = random.randint(4, 6)
 easteregG = QtWidgets.QPushButton("click me!", parent=fl)
 manual = QtWidgets.QPushButton("?", parent=fl)
 creator = QtWidgets.QLabel(msg, parent=fl)
@@ -43,7 +52,7 @@ minecraft = QtWidgets.QPushButton("minecraft", parent=fl)
 exit = QtWidgets.QPushButton("exit", parent=fl)
 name = QtWidgets.QLabel("Flame Autoclicker v 1.1", parent=fl)
 oImage = QImage("pexels-rafael-guajardo-604671.jpg")
-oImage = oImage.scaled(QSize(0,200))
+oImage = oImage.scaled(QSize(200,200))
 name.setStyleSheet("QLabel"
                   "{"
                   "color: darkred;"
@@ -54,7 +63,7 @@ name.setStyleSheet("QLabel"
 
 manual.setStyleSheet("QPushButton"
                      "{"
-                     "background-color: lightgray;"
+                     "background-color:" + look.manualbutton + ";"
                      "}"
                      "QPushButton::pressed"
                      "{"
@@ -65,7 +74,7 @@ manual.setStyleSheet("QPushButton"
 
 minecraft.setStyleSheet("QPushButton"
                        "{"
-                        "background-color: lightgray;"
+                        "background-color:" + look.minecraftbutton + ";"
                         "}"
                          "QPushButton::pressed"
                         "{"
@@ -79,7 +88,7 @@ minecraft.setStyleSheet("QPushButton"
 
 settings.setStyleSheet("QPushButton"
                        "{"
-                        "background-color: lightgray;"
+                        "background-color:" + look.settingsbutton + ";"
                         "}"
                          "QPushButton::pressed"
                         "{"
@@ -90,7 +99,7 @@ settings.setStyleSheet("QPushButton"
 
 exit.setStyleSheet("QPushButton"
                        "{"
-                        "background-color: lightgray;"
+                        "background-color:" + look.exitbutton + ";"
                         "}"
                          "QPushButton::pressed"
                         "{"
@@ -101,7 +110,7 @@ exit.setStyleSheet("QPushButton"
 
 click.setStyleSheet("QPushButton"
                 "{"
-                "background-color: lightgray;"
+                "background-color:" + look.clickbutton + ";"
                 "}"
                 "QPushButton::pressed"
                 "{"
@@ -114,7 +123,7 @@ click.setStyleSheet("QPushButton"
 
 info.setStyleSheet("QPushButton"
                 "{"
-                "background-color: lightgray;"
+                "background-color:" + look.infobutton + ";"
                 "width: 20px;"
                 "}"
                 "QPushButton::pressed"
@@ -136,6 +145,12 @@ on.setStyleSheet("QLabel"
                 "}"
              )
 
+creator.setStyleSheet("QLabel"
+                "{"
+                "color: darkred;"
+                "}"
+             )
+
 
 def infofunct():
  os.system("python3 click-qt.py")
@@ -150,7 +165,10 @@ def set():
 
 
 def clickf():
- os.system("python3 click-qt.py")
+ try:
+    os.system("python3 click-qt.py")
+ except:
+    os.system("python click-qt.py")
 
 
 def appexit():
@@ -163,14 +181,29 @@ def githubfunct():
 
 
 def man():
- man = Tk()
- man.option_add('*Font', 'Times')
- man.geometry("500x500")
- t = Label(text="test",font="italic")
- t.place(x=50,y=50)
+ manual = QtWidgets.QApplication([])
+ f = QtWidgets.QWidget()
 
- man.mainloop()
+ c = QtWidgets.QLabel("test", parent=f)
+ f.setGeometry(400, 400, 400, 400)
+ f.setWindowTitle("test")
 
+ f.show()
+
+ manual.exec_()
+
+
+def mc():
+ os.system("python3 mc.py")
+
+#font
+
+try:
+   f = open("bigfont-true.txt", "r")
+   f.close()
+   sz = "15"
+except:
+    sz = "13"
 
 
 click.clicked.connect(lambda: clickf())
@@ -179,9 +212,10 @@ settings.clicked.connect(lambda: set())
 exit.clicked.connect(lambda: appexit())
 github.clicked.connect(lambda: githubfunct())
 manual.clicked.connect(lambda: man())
+minecraft.clicked.connect(lambda: mc())
 
 click.setFont(QFont("Arial", 13))
-settings.setFont(QFont("Arial", 13))
+settings.setFont(QFont("Arial",13))
 info.setFont(QFont("Arial", 13))
 minecraft.setFont(QFont("Arial", 13))
 exit.setFont(QFont("Arial", 13))
