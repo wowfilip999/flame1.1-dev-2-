@@ -67,7 +67,7 @@ manual.setStyleSheet("QPushButton"
                      "}"
                      "QPushButton::pressed"
                      "{"
-                     "background-color: red;"
+                     "background-color:" + look.manualbuttonpressed + ";"
                      "}"
 
                     )
@@ -78,7 +78,7 @@ minecraft.setStyleSheet("QPushButton"
                         "}"
                          "QPushButton::pressed"
                         "{"
-                        "background-color : red;"
+                        "background-color :" + look.minecraftbuttonpressed + ";"
                         "}"
 
                     )
@@ -92,7 +92,7 @@ settings.setStyleSheet("QPushButton"
                         "}"
                          "QPushButton::pressed"
                         "{"
-                        "background-color : red;"
+                        "background-color :" + look.settingsbuttonpressed + ";"
                         "}"
 
                     )
@@ -103,7 +103,7 @@ exit.setStyleSheet("QPushButton"
                         "}"
                          "QPushButton::pressed"
                         "{"
-                        "background-color : red;"
+                        "background-color :" + look.exitbuttonpressed + ";"
                         "}"
 
                     )
@@ -114,7 +114,7 @@ click.setStyleSheet("QPushButton"
                 "}"
                 "QPushButton::pressed"
                 "{"
-                "background-color : red;"
+                "background-color :" + look.clickbuttonpressed + ";"
                 "}"
 
                )
