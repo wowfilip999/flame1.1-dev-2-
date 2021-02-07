@@ -1,10 +1,18 @@
 from tkinter import *
+from tkinter import messagebox
 import datetime 
 import os
 import random
 import time
-import start
+import platform
+operatingsystem = platform.system()
+#import start
+
 a = 0
+
+class look:
+  wid = 50
+
 
 flametext = "flameautoclicker"
 
@@ -35,8 +43,12 @@ f.write("start\n")
 f.close()
 
 root = Tk()
+root.iconphoto(False, PhotoImage(file='fire_1f525.png'))
 root.geometry("1500x1500")
-root.title("Flame 1.0")
+root.title("Flame 1.1 tkinter gui")
+bg = PhotoImage(file = "fire_1f525.png")  #fire_1f525.png
+
+messagebox.showinfo("lets start!", "thanks for downloading flame")
 root.configure(background="black")
 
 def minecraft():
@@ -65,8 +77,10 @@ def click():
   print("test")
 
 
- text = Label(set,text="Flame 1.0",bg="black",fg="red",height=5)
- slow = Button(set,text="slow",bg="gray",command=slow,fg="black",borderwidth=3,width=45,height=3)
+
+ #text = Label(set,text="Flame 1.0",bg="black",fg="red",height=5)
+ timed = Button(set,text=show,bg="gray")
+ click = Button(set,text="slow",bg="gray",command=slow,fg="black",borderwidth=3,width=45,height=3)
  slowinfo = Label(set,text="slow",bg="gray",command=slow,fg="red")
  faster = Button(set,text="faster",bg="gray",fg="black",command=faster,borderwidth=3,width=45,height=3)
  fast = Button(set,text="fast",bg="gray",fg="black",command=fast,borderwidth=3,width=45,height=3)
@@ -77,13 +91,15 @@ def click():
  slowmore = Button(set,bg="gray",command=slowmore,height=3,width=0,borderwidth=1)
 
  text.pack()
- slow.pack()
- faster.pack()
- fast.pack()
- super.pack()
- mega.pack()
- legit.pack()
- timed.pack()
+ click.pack()
+ #faster.pack()
+ #fast.pack()
+ #super.pack()
+ #mega.pack()
+ #legit.pack()
+ #timed.pack()
+ timed.place(x=200,y=100)
+
  slowmore.place(y=90,x=844)
 
  set.mainloop()
@@ -91,9 +107,18 @@ def click():
 
 
 def style():
- import os
- os.system("python3 style.py")
+ style = Tk()
+ style.configure(background="gray")
+ style.title("select theme")
+ style.geometry("500x500")
 
+
+
+ old = Button(style,text="old",width=25,height=3)
+
+ old.pack()
+
+ style.mainloop()
 
 
 def info():
@@ -322,12 +347,38 @@ def click():
 
  
  def slow():
-  os.system("python3 timed.py")
-  while True:
-    pyautogui.click()
-    time.sleep(0.8)
-    pyautogui.click()
-    pyautogui.click()
+  from pynput import keyboard
+
+  def on_press(key):
+   pyautogui.click()
+   time.sleep(0.2)
+   pyautogui.click()
+   time.sleep(0.1)
+
+  def on_release(key):
+   bt = bd.bind
+   t = "left"
+   print('{0} released'.format(
+        key))
+   if key == keyboard.Key.left:
+        # Stop listener
+        return False
+
+  # Collect events until released
+  with keyboard.Listener(
+       on_press=on_press,
+       on_release=on_release) as listener:
+     listener.join()
+
+  # ...or, in a non-blocking fashion:
+  listener = keyboard.Listener(
+      on_press=on_press,
+      on_release=on_release)
+  listener.start()
+
+
+ 
+
 
  def test():
   import time
@@ -360,24 +411,51 @@ def click():
  set.geometry("1500x1500")
  set.configure(background="black")
 
+ import option as opti
+ 
+
+ def tmd():
+  if opti.toggled == "true":
+    os.remove("option.py")
+    f = open("option.py", "w")
+    f.write('toggled = "false"')
+    f.close()
+
+  if opti.toggled == "false":
+    os.remove("option.py")
+    f = open("option.py", "w")
+    f.write('toggled = "true"')
+    f.close()
+
+
+ if opti.toggled == "false":
+   show = "off"
+   os.system("dir")
+
+ if opti.toggled == "true":
+   show = "true"
+
+
  text = Label(set,text="Flame 1.0",bg="black",fg="red",height=5)
  slo = Button(set,text="slow",bg="gray",command=slow,fg="black",borderwidth=3,width=45,height=3)
- faster = Button(set,text="faster",bg="gray",fg="black",command=faster,borderwidth=3,width=45,height=3)
- fast = Button(set,text="fast",bg="gray",fg="black",command=fast,borderwidth=3,width=45,height=3)
- super = Button(set,text="super",bg="gray",fg="black", command=super,borderwidth=3,width=45,height=3)
- mega = Button(set,text="mega",bg="gray",fg="black", command=mega,borderwidth=3,width=45,height=3)
- legit = Button(set,text="legit",bg="gray",fg="black",command=legit,borderwidth=3,width=45,height=3)
- mcaim = Button(set,text="mcaim",bg="gray",fg="black",command=mcaim,borderwidth=3,width=45,height=3)
- slowmore = Button(set,bg="gray",command=slowmore,height=3,width=0,borderwidth=1)
+ timed = Button(set,text=show,width=20,height=3,bg="gray",command=tmd)
+ #faster = Button(set,text="faster",bg="gray",fg="black",command=faster,borderwidth=3,width=45,height=3)
+ #fast = Button(set,text="fast",bg="gray",fg="black",command=fast,borderwidth=3,width=45,height=3)
+ #super = Button(set,text="super",bg="gray",fg="black", command=super,borderwidth=3,width=45,height=3)
+ #mega = Button(set,text="mega",bg="gray",fg="black", command=mega,borderwidth=3,width=45,height=3)
+ #legit = Button(set,text="legit",bg="gray",fg="black",command=legit,borderwidth=3,width=45,height=3)
+ #mcaim = Button(set,text="mcaim",bg="gray",fg="black",command=mcaim,borderwidth=3,width=45,height=3)
+ #slowmore = Button(set,bg="gray",command=slowmore,height=3,width=0,borderwidth=1)
 
  text.pack()
  slo.pack()
- faster.pack()
- fast.pack()
- super.pack()
- mega.pack()
- legit.pack()
- mcaim.pack()
+ timed.place(x=200,y=150)
+ #faster.pack()
+ #fast.pack()
+ #super.pack()
+ #mega.pack()
+ #legit.pack()
+ #mcaim.pack()
 
 
  set.mainloop()
@@ -386,18 +464,52 @@ def click():
 def warn():
  print("test")
 
+
+import tk_theme as theme
+
+label1 = Label( root, image=bg,bg="black") 
 x = datetime.datetime.now()
 datum = Label(root,text=x)
 text = Label(root, text=flametext,fg="red",bg="black",height=5,font="italic",cursor="cross")
-click = Button(root, text="click",command=click,fg="black",width=45,height=3,bg="gray",borderwidth=3,cursor="cross")
-warn = Button(root, text="warn",command=warn,bg="gray",fg="black",width=45,height=3,borderwidth=3,cursor="cross")
-minecraft = Button(root, text="minecraft",command=minecraft,bg="gray",fg="black",width=45,height=3,borderwidth=3,cursor="cross")
-info = Button(root, text="info",command=info,bg="gray",fg="black",width=45,height=3,borderwidth=3,cursor="cross")
-style = Button(root, text="style",command=style,bg="gray",fg="black",width=45,height=3,borderwidth=3,cursor="cross")
-exit = Button(root, text="exit",command=exit,bg="gray",fg="black",width=45,height=3,borderwidth=3,cursor="cross")
+click = Button(root, text="click",command=click,fg="black",width=theme.wid,height=3,bg="gray",borderwidth=3,cursor="cross")
+warn = Button(root, text="warn",command=warn,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+minecraft = Button(root, text="minecraft",command=minecraft,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+info = Button(root, text="info",command=info,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+style = Button(root, text="style",command=style,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+exit = Button(root, text="exit",command=exit,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 creator  = Label(root, text="by wowfilip999",bg="black",fg="red")
-settings = Button(root,text="settings",bg="gray",fg="black",command=settings,borderwidth=3,width=45,height=3,cursor="cross")
+settings = Button(root,text="settings",bg="gray",fg="black",command=settings,borderwidth=3,width=theme.wid,height=3,cursor="cross")
+system = Label(root,text=operatingsystem,bg="black",fg="red")
+
 help  = Button(root, text="?",command=help,bg="white",fg="black",width=1,height=1,borderwidth=2)
+
+
+
+#font 
+textconf = ("Times", 25)
+helpconf = ("Arial", 14)
+creatorconf= ("Italic", 12)
+systemconf = ("Italic", 14)
+infoconf = ("Times", 12)
+settingsconf = ("Times", 12)
+exitconf = ("Times", 12)
+styleconf = ("Times", 12)
+minecraftconf = ("Times", 12)
+fontconf = (theme.font, theme.size)
+
+settings.config(font=fontconf)
+minecraft.config(font=fontconf)
+style.config(font=fontconf)
+warn.config(font=fontconf)
+exit.config(font=fontconf)
+help.config(font=helpconf)
+system.config(font=systemconf)
+info.config(font=fontconf)
+click.config(font=fontconf)
+creator.config(font=creatorconf)
+text.config(font=theme.textconf)
+
+#---------------
 
 text.pack()
 click.pack()
@@ -407,11 +519,13 @@ info.pack()
 style.pack()
 settings.pack()
 exit.pack()
-help.place(x=1250,y=670)
+label1.place(y=10, x=780)
+system.place(y=666,x= 1150)
+help.place(x=1245,y=660)
 creator.place(x=5,y=670)
 
 import os
-os.chdir("extesions")
+#os.chdir("extesions")
 try:
     os.system("python3 run.py")
     f = open("extesion1.py")
