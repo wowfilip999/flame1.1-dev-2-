@@ -8,13 +8,40 @@ import platform
 operatingsystem = platform.system()
 #import start
 
+
+import flameconfig as cs  #if your have for python other command than python or python3
+if cs.customcmd == "true":
+  pycmd = input("enter command to launch python on your machine:")
+  print("added command as " +  pycmd + ".." )
+
+
+class thm:
+  x = 100
+  fnt = ("Arial", 15)
+
+#themeselect = Tk()
+#themeselect.geometry("500x500")
+#themeselect.title("resultion picker")
+
+
+#default = Button(themeselect,text="default",fg="black",height="2",width="19")
+
+#default.config(font=thm.fnt)
+
+#default.place(x=thm.x,y=100)
+#default.pack()
+
+#themeselect.mainloop()
+
+
+
 a = 0
 
 class look:
   wid = 50
 
 
-flametext = "flameautoclicker"
+flametext = "FLAMEAUTOCLICKER"
 
 x = datetime.datetime.now()
 ran = random.randint(2, 20)
@@ -33,8 +60,6 @@ if ran == 6:
   o.place(x=500,y=500)
   e.mainloop()
   
-
-
 os.system("python3 conf7.py")
 import pyautogui
 f = open("log.txt", "a")
@@ -43,13 +68,18 @@ f.write("start\n")
 f.close()
 
 root = Tk()
-root.iconphoto(False, PhotoImage(file='fire_1f525.png'))
-root.geometry("1500x1500")
-root.title("Flame 1.1 tkinter gui")
-bg = PhotoImage(file = "fire_1f525.png")  #fire_1f525.png
+#root.iconphoto(False, PhotoImage(file='fire_1f525.png')) 
+#root.geometry(cs.screen)
+if operatingsystem == "Linux":
+  root.attributes("-zoomed", True)
+if operatingsystem == "windows":
+  root.state("zoomed")
+
+bg = PhotoImage(file = "fire_1f525.png")
 
 messagebox.showinfo("lets start!", "thanks for downloading flame")
 root.configure(background="black")
+root.title("flame1.1 >> tkinter gui")
 
 def minecraft():
  mc = Tk()
@@ -132,31 +162,42 @@ def info():
  except:
       p = 1
 
- if sys == 1:
+ if operatingsystem == "Windows":
    system = " your os : windows"
 
- if sys == 2:
+ if operatingsystem == "Linux":
    system = "your os : linux"
 
- a = ("20")
+ else:
+     system = "your os: unknow"
+
+ a = ("35")
  info = Tk()
  info.configure(background="black")
  info.geometry("1500x1500")
- info.title("Flame")
+ info.title("flame1.1 << informations")
  n = ("purple")
  inf = Label(info, text="INFORMATIONS:", bg="black", fg="red",width=a,font="italic")
- version = Label(info, text="version 1.0 beta",fg=n,bg="black",width=a,font="italic")
- dev = Label(info, text="dev Filip Šiller",fg=n,bg="black",width=a,font="italic")
- module = Label(info, text="module pyautogui",fg=n,bg="black",width=a,font="italic")
- contact = Label(info, text="Discord : filip999#2904",fg=n,bg="black",width=a,font="italic")
- os = Label(info, text=system,fg=n,bg="black",width=a,font="italic")
+ version = Button(info, text="version 1.1 development",fg=n,bg="black",width=a,font="italic")
+ dev = Button(info, text="dev Filip Šiller",fg=n,bg="black",width=a,font="italic")
+ module = Button(info, text="module pyautogui",fg=n,bg="black",width=a,font="italic")
+ contact = Button(info, text="Discord : filip988#3501",fg=n,bg="black",width=a,font="italic")
+ os = Button(info, text=system,fg=n,bg="black",width=a,font="italic")
+ 
 
- inf.pack()
- version.pack()
- dev.pack()
- module.pack()
- contact.pack()
- os.pack()
+ class p:
+   t = "450"
+
+ inf.place(x=300,y=50)
+ version.place(x=p.t,y=150)
+ dev.place(x=p.t,y=200)
+ module.place(x=p.t,y=250)
+ contact.place(x=p.t,y=300)
+ os.place(x=p.t,y=350) 
+
+ inf.config(font="Italic, 25")
+
+ info.mainloop()
 
 def settings():
  settings = Tk()
@@ -181,7 +222,14 @@ def settings():
   confirm.mainloop()
 
  def legitset():
-  os.system("python3 legitset.py")
+  if cs.customcmd == "true":
+    os.system(pycmd + " legitset.py")
+
+  else:
+      if operatingsystem == "Linux":
+        os.system("python3 legitset.py")
+      if operatingsystem == "windows":
+        os.system("python legitset.py")
 
  def timed():
   def op1():
@@ -411,7 +459,7 @@ def click():
  set.geometry("1500x1500")
  set.configure(background="black")
 
- import option as opti
+ #import option as opti
  
 
  def tmd():
@@ -436,7 +484,7 @@ def click():
    show = "true"
 
 
- text = Label(set,text="Flame 1.0",bg="black",fg="red",height=5)
+ text = Label(set,text="Flame 1.1",bg="black",fg="red",height=5)
  slo = Button(set,text="slow",bg="gray",command=slow,fg="black",borderwidth=3,width=45,height=3)
  timed = Button(set,text=show,width=20,height=3,bg="gray",command=tmd)
  #faster = Button(set,text="faster",bg="gray",fg="black",command=faster,borderwidth=3,width=45,height=3)
@@ -467,7 +515,8 @@ def warn():
 
 import tk_theme as theme
 
-label1 = Label( root, image=bg,bg="black") 
+
+label1 = Label(root, image=bg,bg="black") 
 x = datetime.datetime.now()
 datum = Label(root,text=x)
 text = Label(root, text=flametext,fg="red",bg="black",height=5,font="italic",cursor="cross")
@@ -488,8 +537,8 @@ help  = Button(root, text="?",command=help,bg="white",fg="black",width=1,height=
 #font 
 textconf = ("Times", 25)
 helpconf = ("Arial", 14)
-creatorconf= ("Italic", 12)
-systemconf = ("Italic", 14)
+creatorconf= ("Sans", 13)
+systemconf = ("Sans", 14)
 infoconf = ("Times", 12)
 settingsconf = ("Times", 12)
 exitconf = ("Times", 12)
@@ -519,20 +568,10 @@ info.pack()
 style.pack()
 settings.pack()
 exit.pack()
-label1.place(y=10, x=780)
+label1.place(y=10, x=810)
 system.place(y=666,x= 1150)
 help.place(x=1245,y=660)
 creator.place(x=5,y=670)
-
-import os
-#os.chdir("extesions")
-try:
-    os.system("python3 run.py")
-    f = open("extesion1.py")
-except IOError:
-    warning = Label(root,text="no extesions loaded",fg="red",bg="black")
-    warning.place(x=1100,y=675)
-
 
 
 root.mainloop()
