@@ -14,7 +14,6 @@ if cs.customcmd == "true":
   pycmd = input("enter command to launch python on your machine:")
   print("added command as " +  pycmd + ".." )
 
-
 class thm:
   x = 100
   fnt = ("Arial", 15)
@@ -23,8 +22,11 @@ class thm:
 #themeselect.geometry("500x500")
 #themeselect.title("resultion picker")
 
+#def de():
+ #if thm == "experimental":
+  # them = "test"
 
-#default = Button(themeselect,text="default",fg="black",height="2",width="19")
+#default = Button(themeselect,text="default",fg="black",height="2",width="19",command=de)
 
 #default.config(font=thm.fnt)
 
@@ -33,6 +35,23 @@ class thm:
 
 #themeselect.mainloop()
 
+import thm_tk as tkinterthm
+
+class d:
+  if tkinterthm.theme == "experimental":
+    c = "red"
+    b = "black"
+    bc = "black"
+
+  if tkinterthm.theme == "classic":
+    c = "black"
+    b = "gray"
+    bc = "black"
+
+  if tkinterthm.theme == "custom":
+    c = tkinterthm.custom.c 
+    b = tkinterthm.custom.b 
+    bc = tkinterthm.custom.b   
 
 
 a = 0
@@ -68,14 +87,16 @@ f.write("start\n")
 f.close()
 
 root = Tk()
-#root.iconphoto(False, PhotoImage(file='fire_1f525.png')) 
-#root.geometry(cs.screen)
-if operatingsystem == "Linux":
-  root.attributes("-zoomed", True)
-if operatingsystem == "windows":
-  root.state("zoomed")
+root.iconphoto(False, PhotoImage(file='fire_1f525.png')) 
+root.geometry(cs.screen)
 
 bg = PhotoImage(file = "fire_1f525.png")
+import wowfiliposDetectmodule as checkos
+if checkos.info == "Linux":
+  root.attributes("-zoomed", True)
+if checkos.info == "windows":
+  root.state("zoomed")
+
 
 messagebox.showinfo("lets start!", "thanks for downloading flame")
 root.configure(background="black")
@@ -138,17 +159,19 @@ def click():
 
 def style():
  style = Tk()
- style.configure(background="gray")
- style.title("select theme")
- style.geometry("500x500")
+ os.chdir("btnlook")
+ style.attributes("-zoomed", True)
+ style.title("flame1.1 >> select theme")
+ style.configure(background="black")
+ #bg2 = PhotoImage(file = "fire_1f525.png")
+
+ #label2 = Label(style, image=bg2,bg="black") 
+
+ def clickthm():
+  pass
 
 
 
- old = Button(style,text="old",width=25,height=3)
-
- old.pack()
-
- style.mainloop()
 
 
 def info():
@@ -169,7 +192,7 @@ def info():
    system = "your os : linux"
 
  else:
-     system = "your os: unknow"
+     system = "your os: cant detect your system"
 
  a = ("35")
  info = Tk()
@@ -201,8 +224,9 @@ def info():
 
 def settings():
  settings = Tk()
- settings.geometry("1500x1500")
- settings.title("settings")
+ settings.attributes("-zoomed")
+ settings.title("flame1.1 >> settings")
+ settings.config(background=d.bc)
 
  def manage():
   f = open("conf7.py", "w")
@@ -291,10 +315,11 @@ def settings():
   f.close()
 
 
- manage = Button(settings,text="enable extesion manager on start",width=45,height=3,borderwidth=3,command=legitset)
- timed = Button(settings,text="timed",width=45,height=3,borderwidth=3,command=timed)
- legit = Button(settings,text="legitset",width=45,height=3,borderwidth=3,command=legitset)
- clear = Button(settings,text="clear",width=45,height=3,borderwidth=3,command=clear)
+
+ manage = Button(settings,text="enable extesion manager on start",width=45,height=3,borderwidth=3,command=legitset,fg=d.c,bg=d.b)
+ timed = Button(settings,text="timed",width=45,height=3,borderwidth=3,command=timed,fg=d.c,bg=d.b)
+ legit = Button(settings,text="legitset",width=45,height=3,borderwidth=3,command=legitset,fg=d.c,bg=d.b)
+ clear = Button(settings,text="clear",width=45,height=3,borderwidth=3,command=clear,fg=d.c,bg=d.b)
 
  legit.pack()
  manage.pack()
@@ -307,7 +332,7 @@ def help():
  help = Tk()
  help.geometry("1500x1500")
  help.configure(background="black")
- help.title("flame >> help")
+ help.title("flame1.1 >> help")
 
 
  def close():
@@ -395,37 +420,51 @@ def click():
 
  
  def slow():
+  import time
   from pynput import keyboard
 
   def on_press(key):
-   pyautogui.click()
-   time.sleep(0.2)
-   pyautogui.click()
-   time.sleep(0.1)
+     try:
+         print('alphanumeric key {0} pressed'.format(
+            key.char))
+     except AttributeError:
+         print('special key {0} pressed'.format(
+            key))
 
   def on_release(key):
-   bt = bd.bind
-   t = "left"
-   print('{0} released'.format(
-        key))
-   if key == keyboard.Key.left:
+    print('{0} released'.format(
+      key))
+    if key == keyboard.Key.esc:
         # Stop listener
         return False
 
-  # Collect events until released
+    if key == keyboard.Key.up:
+      pyautogui.click()
+      time.sleep(0.2)
+      pyautogui.click()
+      time.sleep(0.2)
+      pyautogui.click()
+      time.sleep(0.2)
+      pyautogui.click()
+      time.sleep(0.2)
+      pyautogui.click()
+      time.sleep(0.2)
+      pyautogui.click()
+      time.sleep(0.2)
+
+   # Collect events until released
   with keyboard.Listener(
-       on_press=on_press,
-       on_release=on_release) as listener:
+      on_press=on_press,
+      on_release=on_release) as listener:
      listener.join()
 
-  # ...or, in a non-blocking fashion:
+# ...or, in a non-blocking fashion:
   listener = keyboard.Listener(
-      on_press=on_press,
-      on_release=on_release)
+     on_press=on_press,
+     on_release=on_release)
   listener.start()
-
-
  
+
 
 
  def test():
@@ -453,40 +492,20 @@ def click():
  def slowmore():
   print("test")
 
-
  set = Tk()
- set.title("settings")
+ set.title("flame1.1 >> click")
  set.geometry("1500x1500")
  set.configure(background="black")
 
  #import option as opti
  
+ class pl2:
+   p = "410"
+   w = 55
 
- def tmd():
-  if opti.toggled == "true":
-    os.remove("option.py")
-    f = open("option.py", "w")
-    f.write('toggled = "false"')
-    f.close()
-
-  if opti.toggled == "false":
-    os.remove("option.py")
-    f = open("option.py", "w")
-    f.write('toggled = "true"')
-    f.close()
-
-
- if opti.toggled == "false":
-   show = "off"
-   os.system("dir")
-
- if opti.toggled == "true":
-   show = "true"
-
-
- text = Label(set,text="Flame 1.1",bg="black",fg="red",height=5)
- slo = Button(set,text="slow",bg="gray",command=slow,fg="black",borderwidth=3,width=45,height=3)
- timed = Button(set,text=show,width=20,height=3,bg="gray",command=tmd)
+ text = Label(set,text="CLICK MODES",bg="black",fg="red")
+ slow = Button(set,text="slow",bg="black",command=slow,fg="red",width=pl2.w,height=4)
+ custom = Button(set,text="custom",width=pl2.w,height=4,bg="black",fg="red")
  #faster = Button(set,text="faster",bg="gray",fg="black",command=faster,borderwidth=3,width=45,height=3)
  #fast = Button(set,text="fast",bg="gray",fg="black",command=fast,borderwidth=3,width=45,height=3)
  #super = Button(set,text="super",bg="gray",fg="black", command=super,borderwidth=3,width=45,height=3)
@@ -494,10 +513,13 @@ def click():
  #legit = Button(set,text="legit",bg="gray",fg="black",command=legit,borderwidth=3,width=45,height=3)
  #mcaim = Button(set,text="mcaim",bg="gray",fg="black",command=mcaim,borderwidth=3,width=45,height=3)
  #slowmore = Button(set,bg="gray",command=slowmore,height=3,width=0,borderwidth=1)
-
- text.pack()
- slo.pack()
- timed.place(x=200,y=150)
+ 
+ justconfig = ("Italic", 17)
+ text.config(font=justconfig)
+ #customsettings.place(x=500,y=100)
+ text.place(x=550,y=40)
+ custom.place(x=410,y=200)
+ slow.place(x=pl2.p,y=285)
  #faster.pack()
  #fast.pack()
  #super.pack()
@@ -524,11 +546,11 @@ click = Button(root, text="click",command=click,fg="black",width=theme.wid,heigh
 warn = Button(root, text="warn",command=warn,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 minecraft = Button(root, text="minecraft",command=minecraft,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 info = Button(root, text="info",command=info,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
-style = Button(root, text="style",command=style,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+style = Button(root, text="theme",command=style,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 exit = Button(root, text="exit",command=exit,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 creator  = Label(root, text="by wowfilip999",bg="black",fg="red")
 settings = Button(root,text="settings",bg="gray",fg="black",command=settings,borderwidth=3,width=theme.wid,height=3,cursor="cross")
-system = Label(root,text=operatingsystem,bg="black",fg="red")
+system = Label(root,text=checkos.info,bg="black",fg="red")
 
 help  = Button(root, text="?",command=help,bg="white",fg="black",width=1,height=1,borderwidth=2)
 
