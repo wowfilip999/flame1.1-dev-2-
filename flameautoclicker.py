@@ -306,7 +306,14 @@ def info():
 
 def settings():
  settings = Tk()
- settings.attributes("-zoomed")
+ if checkos.info == "Linux":
+  settings.attributes("-zoomed", True)
+ if checkos.info == "Windows":
+   try:
+      settings.state("zoomed")
+ except:
+    settings.attributes("-zoomed", True)
+
  settings.title("flame1.1 >> settings")
  settings.config(background=d.bc)
 
