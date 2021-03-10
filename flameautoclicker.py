@@ -51,7 +51,7 @@ class d:
   if tkinterthm.theme == "custom":
     c = tkinterthm.custom.c 
     b = tkinterthm.custom.b 
-    bc = tkinterthm.custom.b   
+    bc = tkinterthm.custom.bc
 
 
 a = 0
@@ -94,8 +94,11 @@ bg = PhotoImage(file = "fire_1f525.png")
 import wowfiliposDetectmodule as checkos
 if checkos.info == "Linux":
   root.attributes("-zoomed", True)
-if checkos.info == "windows":
-  root.state("zoomed")
+if checkos.info == "Windows":
+  try:
+     root.state("zoomed")
+  except:
+      root.attributes("-zoomed", True)
 
 
 messagebox.showinfo("lets start!", "thanks for downloading flame")
@@ -168,10 +171,89 @@ def style():
  #label2 = Label(style, image=bg2,bg="black") 
 
  def clickthm():
-  pass
+  clickth = Tk()
+
+  class c:
+    t = 10
+
+  clickth.geometry("500x500")
+  clickth.title("look config")
+  
+  def setred():
+   import clicklook as cl
+   f = open("clicklook.py")
+   f.write("text", + "=", "red")
+   f.close()
+
+
+   
+  color_select = Button(clickth,bg="red",width=c.t,command=setred)
+
+  color_select.place(x=150,y=50)
+
+  clickth.mainloop()
+
+ datum = Label(style,text=x)
+ text = Label(style, text=flametext,fg="red",bg="black",height=5,font="italic",cursor="cross")
+ click = Button(style, text="click",command=clickthm,fg="black",width=theme.wid,height=3,bg="gray",borderwidth=3,cursor="cross")
+ warn = Button(style, text="warn",bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+ minecraft = Button(style, text="minecraft",bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+ info = Button(style, text="info",bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+ style = Button(style, text="theme",bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+ exit = Button(style, text="exit",bg="gray",fg="black",command=style.quit(),width=theme.wid,height=3,borderwidth=3,cursor="cross")
+ creator  = Label(style, text="by wowfilip999",bg="black",fg="red")
+ settings = Button(style,text="settings",bg="gray",fg="black",borderwidth=3,width=theme.wid,height=3,cursor="cross")
+ system = Label(style,text=checkos.info,bg="black",fg="red")
+
+ help  = Button(style, text="?",bg="white",fg="black",width=1,height=1,borderwidth=2)
 
 
 
+ #font 
+ textconf = ("Times", 25)
+ helpconf = ("Arial", 14)
+ creatorconf= ("Sans", 13)
+ systemconf = ("Sans", 14)
+ infoconf = ("Times", 12)
+ settingsconf = ("Times", 12)
+ exitconf = ("Times", 12)
+ styleconf = ("Times", 12)
+ minecraftconf = ("Times", 12)
+ fontconf = (theme.font, theme.size)
+
+ settings.config(font=fontconf)
+ minecraft.config(font=fontconf)
+ style.config(font=fontconf)
+ warn.config(font=fontconf)
+ exit.config(font=fontconf)
+ help.config(font=helpconf)
+ system.config(font=systemconf)
+ info.config(font=fontconf)
+ click.config(font=fontconf)
+ creator.config(font=creatorconf)
+ text.config(font=theme.textconf)
+
+ #---------------
+
+ text.pack()
+ click.pack()
+ warn.pack()
+ minecraft.pack()
+ info.pack()
+ style.pack()
+ settings.pack()
+ exit.pack()
+ #label2.place(y=10, x=810)
+ system.place(y=666,x= 1150)
+ help.place(x=1245,y=660)
+ creator.place(x=5,y=670)
+
+
+
+
+
+
+ style.mainloop()
 
 
 def info():
@@ -463,8 +545,80 @@ def click():
      on_press=on_press,
      on_release=on_release)
   listener.start()
- 
 
+
+ def custom():
+  import time
+  from pynput import keyboard
+
+  def on_press(key):
+     try:
+         print('alphanumeric key {0} pressed'.format(
+            key.char))
+     except AttributeError:
+         print('special key {0} pressed'.format(
+            key))
+
+  def on_release(key):
+    print('{0} released'.format(
+      key))
+    if key == keyboard.Key.esc:
+        # Stop listener
+        return False
+
+    if key == keyboard.Key.down:
+      optiongui = Tk()
+      optiongui.title("flame1.1 >> click >> custom settings")
+      optiongui.config(background="black")
+      optiongui.geometry("500x500")
+
+      class k:
+        i = "black"
+        r = "red"
+        p = "300"
+      
+      def spd():
+       spde = Tk()
+       spde.title("speed options")
+       spde.geometry("500x500")
+       
+       
+       spdenter = Entry(spde,value)
+       spdenter.insert(END, 'You email here')
+
+
+       spdenter.place(x=300,y=100)
+
+       spde.mainloop()
+
+      def bind():
+       pass
+
+      tx = Label(optiongui,text="settings",bg=k.i,fg=k.r)
+      bind = Button(optiongui,text="bind",bg=k.i,fg=k.r,width=12,height=3,command=bind)
+      speed = Button(optiongui,text="speed",bg=k.i,fg=k.r,width=12,height=3,command=spd)
+      
+      tx.place(x=20,y=10)
+      tfnt = ("Times", 16)
+      tx.config(font=tfnt)
+      speed.place(x=k.p,y=90)
+      bind.place(x=k.p,y=20)
+      optiongui.mainloop()
+
+    if key == keyboard.Key.up:
+      pyautogui.click()
+      time.sleep(00.10)
+      pyautogui.click()
+      pyautogui.click()
+      time.sleep(00.10)
+      pyautogui.click()
+      time.sleep(0.1)
+
+   # Collect events until released
+  with keyboard.Listener(
+      on_press=on_press,
+      on_release=on_release) as listener:
+     listener.join()
 
 
  def test():
@@ -505,9 +659,9 @@ def click():
 
  text = Label(set,text="CLICK MODES",bg="black",fg="red")
  slow = Button(set,text="slow",bg="black",command=slow,fg="red",width=pl2.w,height=4)
- custom = Button(set,text="custom",width=pl2.w,height=4,bg="black",fg="red")
+ custom = Button(set,text="custom",width=pl2.w,height=4,bg="black",fg="red",command=custom)
  #faster = Button(set,text="faster",bg="gray",fg="black",command=faster,borderwidth=3,width=45,height=3)
- #fast = Button(set,text="fast",bg="gray",fg="black",command=fast,borderwidth=3,width=45,height=3)
+ fast = Button(set,text="fast",bg="black",fg="red",borderwidth=3,width=pl2.w,height=4)
  #super = Button(set,text="super",bg="gray",fg="black", command=super,borderwidth=3,width=45,height=3)
  #mega = Button(set,text="mega",bg="gray",fg="black", command=mega,borderwidth=3,width=45,height=3)
  #legit = Button(set,text="legit",bg="gray",fg="black",command=legit,borderwidth=3,width=45,height=3)
@@ -521,7 +675,7 @@ def click():
  custom.place(x=410,y=200)
  slow.place(x=pl2.p,y=285)
  #faster.pack()
- #fast.pack()
+ fast.place(x=pl2.p,y=370)
  #super.pack()
  #mega.pack()
  #legit.pack()
@@ -536,6 +690,21 @@ def warn():
 
 
 import tk_theme as theme
+stylebtn = tkinterthm.custom.b
+colortext = tkinterthm.custom.c
+
+if tkinterthm.custom.useinkmenu == "no":
+  del colortext
+  del stylebtn
+  colortext = "black"
+  stylebtn = "gray"
+  
+if tkinterthm.custom.useinkmenu == "yes":
+  pass
+
+else:
+  del stylebtn
+  stylebtn = "gray"
 
 
 label1 = Label(root, image=bg,bg="black") 
@@ -546,7 +715,7 @@ click = Button(root, text="click",command=click,fg="black",width=theme.wid,heigh
 warn = Button(root, text="warn",command=warn,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 minecraft = Button(root, text="minecraft",command=minecraft,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 info = Button(root, text="info",command=info,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
-style = Button(root, text="theme",command=style,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
+style = Button(root, text="theme",command=style,bg=stylebtn,fg=colortext ,width=theme.wid,height=3,borderwidth=3,cursor="cross")
 exit = Button(root, text="exit",command=exit,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 creator  = Label(root, text="by wowfilip999",bg="black",fg="red")
 settings = Button(root,text="settings",bg="gray",fg="black",command=settings,borderwidth=3,width=theme.wid,height=3,cursor="cross")
