@@ -311,8 +311,8 @@ def settings():
  if checkos.info == "Windows":
    try:
       settings.state("zoomed")
- except:
-    settings.attributes("-zoomed", True)
+   except:
+       settings.attributes("-zoomed", True)
 
  settings.title("flame1.1 >> settings")
  settings.config(background=d.bc)
