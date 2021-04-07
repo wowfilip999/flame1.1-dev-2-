@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
-import datetime 
+import pyautogui
 import os
-import random
 import time
 import platform
 operatingsystem = platform.system()
@@ -18,24 +17,14 @@ class thm:
   x = 100
   fnt = ("Arial", 15)
 
-#themeselect = Tk()
-#themeselect.geometry("500x500")
-#themeselect.title("resultion picker")
 
-#def de():
- #if thm == "experimental":
-  # them = "test"
-
-#default = Button(themeselect,text="default",fg="black",height="2",width="19",command=de)
-
-#default.config(font=thm.fnt)
-
-#default.place(x=thm.x,y=100)
-#default.pack()
-
-#themeselect.mainloop()
 
 import thm_tk as tkinterthm
+
+class classic:
+  c = "black"
+  b = "gray"
+  bc = "black"
 
 class d:
   if tkinterthm.theme == "experimental":
@@ -44,14 +33,19 @@ class d:
     bc = "black"
 
   if tkinterthm.theme == "classic":
-    c = "black"
-    b = "gray"
-    bc = "black"
+    class classic:
+      c = "black"
+      b = "gray"
+      bc = "black"
 
-  if tkinterthm.theme == "custom":
-    c = tkinterthm.custom.c 
-    b = tkinterthm.custom.b 
-    bc = tkinterthm.custom.bc
+  try:
+     if tkinterthm.theme == "custom":
+       c = tkinterthm.custom.c 
+       b = tkinterthm.custom.b 
+       bc = tkinterthm.custom.bc
+
+  except:
+      pass
 
 
 a = 0
@@ -62,68 +56,23 @@ class look:
 
 flametext = "FLAMEAUTOCLICKER"
 
-x = datetime.datetime.now()
-ran = random.randint(2, 20)
-if ran == 6:
-  class secret:
-    g=("1500x1500")
-   
-
-  e = Tk()
-  e.geometry(secret.g)
-  e.title("secret")
-
-  msg = Label(e,text="your found secret!",font="bold")
-  o = Label(e,text="send this dev and get speacial flame version(and send screenshot) --> 47227f")
-  msg.place(x=400,y=300)
-  o.place(x=500,y=500)
-  e.mainloop()
-  
-os.system("python3 conf7.py")
-import pyautogui
-f = open("log.txt", "a")
-f.write((str)(x))
-f.write("start\n")
-f.close()
 
 root = Tk()
 root.iconphoto(False, PhotoImage(file='fire_1f525.png')) 
 root.geometry(cs.screen)
+root.resizable(0, 0)
+
 
 bg = PhotoImage(file = "fire_1f525.png")
-import wowfiliposDetectmodule as checkos
-if checkos.info == "Linux":
-  root.attributes("-zoomed", True)
-if checkos.info == "Windows":
-  try:
-     root.state("zoomed")
-  except:
-      root.attributes("-zoomed", True)
 
 
-messagebox.showinfo("lets start!", "thanks for downloading flame")
+messagebox.showinfo("lets start!", "thanks for downloading flame ")
 root.configure(background="black")
+root.resizable(0, 0)
 root.title("flame1.1 >> tkinter gui")
 
 def minecraft():
- mc = Tk()
- mc.geometry("1500x1500")
- mc.configure(background="black")
- mc.title("Flame")
- 
- def mcserver():
-  confing = Tk()
-  confing.configure(background="black")
-
-
- def server1config():
-  os.system("dir")
-
-
- mc = Button(mc,text="mc confing",command=mcserver,width=45,height=3)
- mc.pack()
-
- mc.mainloop()
+ pass
 
 def click():
 
@@ -162,97 +111,17 @@ def click():
 
 def style():
  style = Tk()
- os.chdir("btnlook")
  style.attributes("-zoomed", True)
  style.title("flame1.1 >> select theme")
  style.configure(background="black")
- #bg2 = PhotoImage(file = "fire_1f525.png")
 
- #label2 = Label(style, image=bg2,bg="black") 
+ flametext = Label(style,bg="black",fg="red",text="FLAME THEMES")
 
- def clickthm():
-  clickth = Tk()
+ default = Button(style,width=50,height=2,text="default",borderwidth=2,bg="black",fg="red")
 
-  class c:
-    t = 10
-
-  clickth.geometry("500x500")
-  clickth.title("look config")
-  
-  def setred():
-   import clicklook as cl
-   f = open("clicklook.py")
-   f.write("text", + "=", "red")
-   f.close()
-
-
-   
-  color_select = Button(clickth,bg="red",width=c.t,command=setred)
-
-  color_select.place(x=150,y=50)
-
-  clickth.mainloop()
-
- datum = Label(style,text=x)
- text = Label(style, text=flametext,fg="red",bg="black",height=5,font="italic",cursor="cross")
- click = Button(style, text="click",command=clickthm,fg="black",width=theme.wid,height=3,bg="gray",borderwidth=3,cursor="cross")
- warn = Button(style, text="warn",bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
- minecraft = Button(style, text="minecraft",bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
- info = Button(style, text="info",bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
- style = Button(style, text="theme",bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
- exit = Button(style, text="exit",bg="gray",fg="black",command=style.quit(),width=theme.wid,height=3,borderwidth=3,cursor="cross")
- creator  = Label(style, text="by wowfilip999",bg="black",fg="red")
- settings = Button(style,text="settings",bg="gray",fg="black",borderwidth=3,width=theme.wid,height=3,cursor="cross")
- system = Label(style,text=checkos.info,bg="black",fg="red")
-
- help  = Button(style, text="?",bg="white",fg="black",width=1,height=1,borderwidth=2)
-
-
-
- #font 
- textconf = ("Times", 25)
- helpconf = ("Arial", 14)
- creatorconf= ("Sans", 13)
- systemconf = ("Sans", 14)
- infoconf = ("Times", 12)
- settingsconf = ("Times", 12)
- exitconf = ("Times", 12)
- styleconf = ("Times", 12)
- minecraftconf = ("Times", 12)
- fontconf = (theme.font, theme.size)
-
- settings.config(font=fontconf)
- minecraft.config(font=fontconf)
- style.config(font=fontconf)
- warn.config(font=fontconf)
- exit.config(font=fontconf)
- help.config(font=helpconf)
- system.config(font=systemconf)
- info.config(font=fontconf)
- click.config(font=fontconf)
- creator.config(font=creatorconf)
- text.config(font=theme.textconf)
-
- #---------------
-
- text.pack()
- click.pack()
- warn.pack()
- minecraft.pack()
- info.pack()
- style.pack()
- settings.pack()
- exit.pack()
- #label2.place(y=10, x=810)
- system.place(y=666,x= 1150)
- help.place(x=1245,y=660)
- creator.place(x=5,y=670)
-
-
-
-
-
-
+ flametext.config(font=("Italic", 20))
+ default.place(x=400,y=200)
+ flametext.place(x=500,y=0)
  style.mainloop()
 
 
@@ -274,7 +143,7 @@ def info():
    system = "your os : linux"
 
  else:
-     system = "your os: cant detect your system"
+     system = "sorry can't detect your system :/" 
 
  a = ("35")
  info = Tk()
@@ -306,16 +175,16 @@ def info():
 
 def settings():
  settings = Tk()
- if checkos.info == "Linux":
+ if operatingsystem == "Linux":
   settings.attributes("-zoomed", True)
- if checkos.info == "Windows":
+ if operatingsystem == "Windows":
    try:
       settings.state("zoomed")
    except:
        settings.attributes("-zoomed", True)
 
  settings.title("flame1.1 >> settings")
- settings.config(background=d.bc)
+ settings.config(background="black")
 
  def manage():
   f = open("conf7.py", "w")
@@ -378,7 +247,7 @@ def settings():
         f.close()
   time.sleep(1)
   timed = Tk()
-  timed.title("Flame")
+  timed.title("flame1.1")
   timed.configure(background="black")
   timed.geometry("1500x1500")
 
@@ -404,17 +273,23 @@ def settings():
   f.close()
 
 
+ if tkinterthm.custom == "no":
+   class classic:
+     c = "black"
+     b = "gray"
+     bc = "black"
 
- manage = Button(settings,text="enable extesion manager on start",width=45,height=3,borderwidth=3,command=legitset,fg=d.c,bg=d.b)
- timed = Button(settings,text="timed",width=45,height=3,borderwidth=3,command=timed,fg=d.c,bg=d.b)
- legit = Button(settings,text="legitset",width=45,height=3,borderwidth=3,command=legitset,fg=d.c,bg=d.b)
- clear = Button(settings,text="clear",width=45,height=3,borderwidth=3,command=clear,fg=d.c,bg=d.b)
+  # manage = Button(settings,text="enable extesion manager on start",width=45,height=3,borderwidth=3,command=legitset,fg=classic.c,bg=classic.b)
+   #timed = Button(settings,text="timed",width=45,height=3,borderwidth=3,command=timed,fg=classic.c,bg=classic.b)
+   #legit = Button(settings,text="legitset",width=45,height=3,borderwidth=3,command=legitset,fg=thm.c,bg=classic.b)
+   #clear = Button(settings,text="clear",width=45,height=3,borderwidth=3,command=clear,fg=classic.c,bg=classic.b)
 
- legit.pack()
- manage.pack()
- timed.pack()
- clear.pack()
- settings.mainloop()
+
+ #legit.pack()
+ #manage.pack()
+ #timed.pack()
+ #clear.pack()
+ #settings.mainloop()
 
 
 def help():
@@ -430,14 +305,8 @@ def help():
 
 
  close = Button(help, text="close",command=close,borderwidth=2,height=2,width=7)
- click = Label(help, text="CLICK",bg="black",fg="red",font="italic")
- clickinfo = Label(help, text="when press this button wiew click modes",bg="black",fg="red",font="arial")
- clickinfo2 = Label(help, text="modes:",bg="black",fg="red",font="arial")
- clickinfo3 = Label(help, text="click slow unknow cps",bg="black",fg="red",font="arial")
+ click = Label(help, text="working on this..",bg="black",fg="red",font="italic")
  click.place(x=5,y=40)
- clickinfo.place(x=5,y=70)
- clickinfo2.place(x=5,y=100)
- clickinfo3.place(x=5,y=130)
  close.place(x=1205,y=0)
  help.mainloop()
 
@@ -667,13 +536,7 @@ def click():
  text = Label(set,text="CLICK MODES",bg="black",fg="red")
  slow = Button(set,text="slow",bg="black",command=slow,fg="red",width=pl2.w,height=4)
  custom = Button(set,text="custom",width=pl2.w,height=4,bg="black",fg="red",command=custom)
- #faster = Button(set,text="faster",bg="gray",fg="black",command=faster,borderwidth=3,width=45,height=3)
  fast = Button(set,text="fast",bg="black",fg="red",borderwidth=3,width=pl2.w,height=4)
- #super = Button(set,text="super",bg="gray",fg="black", command=super,borderwidth=3,width=45,height=3)
- #mega = Button(set,text="mega",bg="gray",fg="black", command=mega,borderwidth=3,width=45,height=3)
- #legit = Button(set,text="legit",bg="gray",fg="black",command=legit,borderwidth=3,width=45,height=3)
- #mcaim = Button(set,text="mcaim",bg="gray",fg="black",command=mcaim,borderwidth=3,width=45,height=3)
- #slowmore = Button(set,bg="gray",command=slowmore,height=3,width=0,borderwidth=1)
  
  justconfig = ("Italic", 17)
  text.config(font=justconfig)
@@ -697,16 +560,25 @@ def warn():
 
 
 import tk_theme as theme
-stylebtn = tkinterthm.custom.b
-colortext = tkinterthm.custom.c
+try:
+   stylebtn = classic.b
+except:
+    stylebtn = classic.b
 
-if tkinterthm.custom.useinkmenu == "no":
-  del colortext
-  del stylebtn
-  colortext = "black"
-  stylebtn = "gray"
+
+try:
+  colortext = tkinterthm.custom.c
+except:
+    colortext = classic.c
+
+if tkinterthm.custom == "yes":
+  if tkinterthm.custom.useinmenu == "no":
+    del colortext
+    del stylebtn
+    colortext = "black"
+    stylebtn = "gray"
   
-if tkinterthm.custom.useinkmenu == "yes":
+if tkinterthm.custom.useinmenu == "yes":
   pass
 
 else:
@@ -714,9 +586,7 @@ else:
   stylebtn = "gray"
 
 
-label1 = Label(root, image=bg,bg="black") 
-x = datetime.datetime.now()
-datum = Label(root,text=x)
+label1 = Label(root, image=bg,bg="black")
 text = Label(root, text=flametext,fg="red",bg="black",height=5,font="italic",cursor="cross")
 click = Button(root, text="click",command=click,fg="black",width=theme.wid,height=3,bg="gray",borderwidth=3,cursor="cross")
 warn = Button(root, text="warn",command=warn,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
@@ -726,7 +596,7 @@ style = Button(root, text="theme",command=style,bg=stylebtn,fg=colortext ,width=
 exit = Button(root, text="exit",command=exit,bg="gray",fg="black",width=theme.wid,height=3,borderwidth=3,cursor="cross")
 creator  = Label(root, text="by wowfilip999",bg="black",fg="red")
 settings = Button(root,text="settings",bg="gray",fg="black",command=settings,borderwidth=3,width=theme.wid,height=3,cursor="cross")
-system = Label(root,text=checkos.info,bg="black",fg="red")
+system = Label(root,text=operatingsystem,bg="black",fg="red")
 
 help  = Button(root, text="?",command=help,bg="white",fg="black",width=1,height=1,borderwidth=2)
 
