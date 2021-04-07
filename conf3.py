@@ -1,1 +1,0 @@
-pyautogui.move(1, 1)
